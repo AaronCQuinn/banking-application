@@ -11,9 +11,15 @@ import { GrBitcoin } from 'react-icons/gr'
 import { useStateContext } from '../contexts/ContextProvider';
 
 const Sidebar = () => {
-  const { activeMenu, setActiveMenu } = useStateContext();
+  const { activeMenu, setActiveMenu, screenSize } = useStateContext();
   const activeLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-white text-md m-2';
   const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-gray-700 text-md dark:text-gray-200 dark:hover:text-block hover:bg-light-gray m-2';
+
+  const handleCloseSideBar = () => {
+    if (activeMenu && screenSize <= 900) {
+      setActiveMenu(false);
+    }
+  }
   
   const links = [
     {
@@ -95,14 +101,14 @@ const Sidebar = () => {
                   <NavLink
                     to={`/${link.name}`}
                     key={link.name}
-                    onClick={() => {}}
                     style={({ isActive }) => ({
                       backgroundColor: isActive ? currentColor : '',
                     })}
                     className={({ isActive }) => (isActive ? activeLink : normalLink)}
+                    onClick={() => handleCloseSideBar}
                   >
                     {link.icon}
-                    <span className="capitalize ">{link.name}</span>
+                    <span className="capitalize">{link.name}</span>
                   </NavLink>
                 ))}
               </div>

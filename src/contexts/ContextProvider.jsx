@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const StateContext = createContext();
 
@@ -11,6 +11,7 @@ const initialState = {
 export const ContextProvider = (({ children }) => {
     const [activeMenu, setActiveMenu] = useState(true);
     const [isClicked, setIsClicked] = useState(initialState);
+    const [screenSize, setScreenSize] = useState(undefined);
 
     const handleClick = (clicked) => {
         /* Spread initial state, the property matching "clicked" set to true */
@@ -18,7 +19,7 @@ export const ContextProvider = (({ children }) => {
     }
 
     return ( 
-    <StateContext.Provider value={{ activeMenu, setActiveMenu, isClicked, setIsClicked }}>
+    <StateContext.Provider value={{ activeMenu, setActiveMenu, isClicked, setIsClicked, handleClick, screenSize, setScreenSize }}>
         {children} 
     </StateContext.Provider>
     );
