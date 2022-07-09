@@ -39,19 +39,21 @@ const LandingNavbar = () => {
         {(screenSize < 640) ? 
         /* If screen is in mobile view, switch nav positions and create a hamburger menu */
         <>
-        <div className='bg-slate-100 text-blue-500 dark:bg-main-dark-bg dark:text-white p-3'>
+        <div className='bg-transparent text-white dark:bg-main-dark-bg p-3'>
             <div className='flex justify-between mx-auto container items-center'>
-                <Link to='/' className='text-3xl flex items-center font-extrabold text-black dark:text-white gap-3'>
-                    <SiWebmoney /> 
+                <Link to='/' className='text-white text-3xl flex items-center font-extrabold gap-3'>
+                    <div className='border-2 border-white p-1 rounded-full'>
+                        <SiWebmoney /> 
+                    </div>
                 </Link>
                     
                 <button 
-                className='py-2.5 px-6 text-white bg-blue-500 rounded-lg outline-none no-underline border-none cursor-pointer transition ease-in-out delay-150 hover:bg-blue-700'>
+                className='py-2.5 px-14 bg-white text-black rounded outline-none no-underline border-none cursor-pointer transition ease-in-out delay-150 hover:bg-slate-100'>
                     Sign In
                 </button>
 
                 <button> 
-                    <GiHamburgerMenu className='text-3xl text-black dark:text-white' onClick={() => setOpenHamburgerMenu(!openHamburgerMenu)}/>
+                    <GiHamburgerMenu className='text-3xl' onClick={() => setOpenHamburgerMenu(!openHamburgerMenu)}/>
                 </button>
 
             </div>
@@ -60,14 +62,17 @@ const LandingNavbar = () => {
         </>
         
         :    
-
-        <div className='bg-slate-100 drop-shadow-2xl border-b-2 border-black dark:bg-main-dark-bg p-3'>
+        
+        /* Else, render the normal full-size Navbar */
+        <div className='p-3'>
             <div className='flex justify-evenly mx-auto container items-center'>
-                <Link to='/' className='text-3xl flex items-center font-extrabold text-black dark:text-white gap-3'>
-                    <SiWebmoney /> 
-                </Link>
+                    <Link to='/' className='text-white text-3xl flex items-center font-extrabold gap-3'>
+                        <div className='border-2 border-white p-1 rounded-full'>
+                            <SiWebmoney /> 
+                        </div>
+                    </Link>
                     
-                <ul className='flex text-black justify-between dark:text-white gap-14 items-center'>
+                <ul className='flex justify-between text-xl text-white gap-14 items-center'>
                     {menuOptions.map((option) => 
                         <li className='hover:cursor-pointer hover:underline-offset-1 hover:underline' key={option}>
                             {option}
@@ -76,7 +81,7 @@ const LandingNavbar = () => {
                 </ul>                
 
                 <button 
-                className='py-2.5 px-6 text-white bg-blue-500 rounded-lg outline-none no-underline border-none cursor-pointer transition ease-in-out delay-150 hover:bg-blue-700'>
+                className='py-2.5 px-6 bg-white text-black rounded outline-none no-underline border-none cursor-pointer transition ease-in-out delay-150 hover:bg-slate-100'>
                     Sign In
                 </button>
             </div>

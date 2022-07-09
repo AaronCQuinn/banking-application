@@ -1,5 +1,5 @@
 import React from 'react'
-import BGVideo from '../assets/backgroundvid.mp4'
+import BGVideo from '../assets/background.mp4'
 import LandingNavbar from '../components/LandingNavbar'
 
 
